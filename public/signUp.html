@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signUp-page</title>
+</head>
+<body>
+    <div class="container">
+        <h1>sign Up</h1>
+        <p>Please fill in this form to create an account</p>
+        <hr>
+
+        <label for="name"><b>Name:</b></label>
+        <input type="text" placeholder="Enter your name" name="name" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" placeholder="Enter your email" name="email" id="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" placeholder="Enter your password" name="password" id="password" required>
+
+        <div class="clearfix">
+            <button type="submit" id="sign-up-btn" class="signupbtn">Sign Up</button>
+        </div>
+        <hr>
+
+        <p>Already have an account? <a href="./signIn.html">Sign In</a>
+        </p>
+    </div>
+
+    <script>
+        signUpsubmitbutton = document.querySelector("#sign-up-btn");
+
+        let name = document.getElementById("name");
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+
+        signUpsubmitbutton.addEventListener("click", async()=>{ 
+            let user = {
+                name: name.value,
+                email: email.value,
+                password: password.value,
+            };
+
+            // console.log(user);
+
+            let request = await fetch("http://localhost:1326/api/v1/signUp" , {
+                method:"POST",
+                headers:{                                  //we give a metadata in headers
+                    "content-Type":"application/json"  
+                },
+                crossDomain:true,
+                body:JSON.stringify(user), //acha mtlb object ka key value dono ko hi string mai bana dega
+            });
+            let message = await request.text(); 
+            console.log(message); 
+            alert(message);
+
+        })
+
+    </script>
+</body>
+</html>

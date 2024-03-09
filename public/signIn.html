@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signIn-page</title>
+</head>
+<body>
+    <div class="container">
+        <h1>sign In</h1>
+       
+        <hr>
+
+        <label for="name"><b>Name:</b></label>
+        <input type="text" placeholder="Enter your name" name="name" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" placeholder="Enter your email" name="email" id="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" placeholder="Enter your password" name="password" id="password" required>
+
+        <div class="clearfix">
+            <button type="submit" id="sign-i n-btn" class="signinbtn">Sign In</button>
+        </div>
+        <hr>
+
+        <p>Do not have an account? <a href="./signUp.html">Sign Up</a>
+        </p>
+    </div>
+
+    <script>
+        signInsubmitbutton = document.querySelector("#sign-In-btn");
+
+        let name = document.getElementById("name");
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+
+        signInsubmitbutton.addEventListener("click", async()=>{ 
+            let user = {
+                name: name.value,
+                email: email.value,
+                password: password.value,
+            };
+
+            // console.log(user);
+
+            let request = await fetch("http://localhost:1326/api/v1/signIn" , {
+                method:"POST",
+                headers:{                                  //we give a metadata in headers
+                    "content-Type":"application/json"  
+                },
+                crossDomain:true,
+                body:JSON.stringify(user), //acha mtlb object ka key value dono ko hi string mai bana dega
+            });
+            let message = await request.text(); 
+            console.log(message); 
+            alert(message);
+
+        })
+
+    </script>
+</body>
+</html>
