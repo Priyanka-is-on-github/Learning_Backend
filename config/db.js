@@ -1,8 +1,10 @@
-const {sequelize} = require("sequelize");
+// DB is created
 
-const createDB = new sequelize("test-db" , "user","pass",{ 
+const {Sequelize} = require("sequelize"); 
+
+const createDB = new Sequelize("test-db" , "user","pass",{ 
     dialect:"sqlite",
-    host:"./config/db.sqlite",
+    host:"./config/db.sqlite", 
 });
 
-module.exports= createDB;
+module.exports= createDB; 

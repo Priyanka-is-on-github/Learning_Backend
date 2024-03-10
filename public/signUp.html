@@ -48,7 +48,7 @@
             let request = await fetch("http://localhost:1326/api/v1/signUp" , {
                 method:"POST",
                 headers:{                                  //we give a metadata in headers
-                    "content-Type":"application/json"  
+                    "Content-Type":"application/json"  
                 },
                 crossDomain:true,
                 body:JSON.stringify(user), //acha mtlb object ka key value dono ko hi string mai bana dega

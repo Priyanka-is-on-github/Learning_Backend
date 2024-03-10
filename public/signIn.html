@@ -21,7 +21,7 @@
         <input type="password" placeholder="Enter your password" name="password" id="password" required>
 
         <div class="clearfix">
-            <button type="submit" id="sign-i n-btn" class="signinbtn">Sign In</button>
+            <button type="submit" id="sign-In-btn" class="signinbtn">Sign In</button>
         </div>
         <hr>
 
@@ -48,7 +48,7 @@
             let request = await fetch("http://localhost:1326/api/v1/signIn" , {
                 method:"POST",
                 headers:{                                  //we give a metadata in headers
-                    "content-Type":"application/json"  
+                    "Content-Type":"application/json"  
                 },
                 crossDomain:true,
                 body:JSON.stringify(user), //acha mtlb object ka key value dono ko hi string mai bana dega
